@@ -1,12 +1,42 @@
 # Make a class LatLon that can be passed parameters `lat` and `lon` to the
 # constructor
+class LatLon():
+    def __init__(self, lat, lon):
+        self.lat = lat
+        self.lon = lon
 
 # YOUR CODE HERE
+
+
+class Waypoint(LatLon):
+    def __init__(self, name, lat=0, lon=0):
+        super().__init__(lat, lon)
+        self.name = name
+        self.lat = lat
+        self.lon = lon
+
+    def __str__(self):
+        waypoint_string = f"{self.name} \nLat: {self.lat} \n Long: {self.lon}"
+        return waypoint_string
 
 # Make a class Waypoint that can be passed parameters `name`, `lat`, and `lon` to the
 # constructor. It should inherit from LatLon. Look up the `super` method.
 
 # YOUR CODE HERE
+
+
+class Geocache(Waypoint):
+    def __init__(self, name, difficulty, size, lat, lon):
+        super().__init__(name, lat, lon)
+        self.name = name
+        self.lat = lat
+        self.lon = lon
+        self.difficulty = difficulty
+        self.size = size
+
+    def __str__(self):
+        super_string = f"{self.name}\nDifficulty: {self.difficulty}\nSize: {self.size}\nLat: {self.lat}\nLon: {self.lon}"
+        return super_string
 
 # Make a class Geocache that can be passed parameters `name`, `difficulty`,
 # `size`, `lat`, and `lon` to the constructor. What should it inherit from?
@@ -15,7 +45,9 @@
 
 # Make a new waypoint and print it out: "Catacombs", 41.70505, -121.51521
 
+
 # YOUR CODE HERE
+waypoint = Waypoint("Catacombs", 41.70505, -121.51521)
 
 # Without changing the following line, how can you make it print into something
 # more human-readable? Hint: Look up the `object.__str__` method
@@ -26,4 +58,6 @@ print(waypoint)
 # YOUR CODE HERE
 
 # Print it--also make this print more nicely
+geocache = Geocache("Newberry Views", 1.5, 2, 44.052137, -121.41556)
+
 print(geocache)
